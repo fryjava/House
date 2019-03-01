@@ -1,0 +1,48 @@
+Index: ds/src/main/resources/mapper/UserMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ds/src/main/resources/mapper/UserMapper.xml	(date 1551233147005)
++++ ds/src/main/resources/mapper/UserMapper.xml	(date 1551233147005)
+@@ -31,7 +31,7 @@
+     select count(*) from user where phone=#{phone} or email=#{email} or name=#{name}
+   </select>
+   <select id="selectByUserNameAndPassword" resultType="com.xmcc.House.pojo.User">
+-    select <include refid="Base_Column_List"/> from user where email=#{email} and password=#{password}
++    select <include refid="Base_Column_List"/> from user where email=#{email} and passwd=#{password}
+   </select>
+   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+     delete from user
+Index: web/src/main/java/com/xmcc/House/web/filter/LoginFilter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/src/main/java/com/xmcc/House/web/filter/LoginFilter.java	(date 1551232938126)
++++ web/src/main/java/com/xmcc/House/web/filter/LoginFilter.java	(date 1551232938126)
+@@ -27,7 +27,7 @@
+     @Override
+     public void init(FilterConfig filterConfig) throws ServletException {
+ 
+-        urls.add(" /static/**");
++        urls.add("/static/**");
+         urls.add("/accounts/signin");
+         urls.add("/aa");
+         urls.add("/user/login");
+Index: web/src/main/java/com/xmcc/House/web/filter/FilterConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/src/main/java/com/xmcc/House/web/filter/FilterConfig.java	(date 1551232938091)
++++ web/src/main/java/com/xmcc/House/web/filter/FilterConfig.java	(date 1551232938091)
+@@ -14,7 +14,7 @@
+         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+         filterRegistrationBean.setFilter(loginFilter);
+         filterRegistrationBean.addUrlPatterns("*");
+-        filterRegistrationBean.addInitParameter("exclusions","/static/**,/accounts/*,/user/login,aa,/user/register");
++        filterRegistrationBean.addInitParameter("exclusions","/static/**,/accounts/signin,/user/login,/aa,/user/register");
+       return  filterRegistrationBean ;
+     }
+ }

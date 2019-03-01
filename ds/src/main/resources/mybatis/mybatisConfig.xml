@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--关闭缓存，多机环境数据跟新 不会刷新缓存-->
+        <setting name="cacheEnabled" value="false"/>
+        <!--开启驼峰匹配-->
+         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="useGeneratedKeys" value="true"/>
+        <!--配置默认的执行器。SIMPLE 就是普通的执行器；
+    REUSE 执行器会重用预处理语句（prepared statements）；
+    BATCH 执行器将重用语句并执行批量更新。-->
+        <setting name="defaultExecutorType" value="REUSE"/>
+        <setting name="defaultStatementTimeout" value="600"/>
+    </settings>
+    <typeAliases>
+        <package name="com.xmcc.House.pojo"/>
+    </typeAliases>
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/CityMapper.xml"/>
+        <mapper resource="mapper/AgencyMapper.xml"/>
+        <mapper resource="mapper/Agent_msgMapper.xml"/>
+        <mapper resource="mapper/CommentMapper.xml"/>
+        <mapper resource="mapper/CommunityMapper.xml"/>
+        <mapper resource="mapper/House_msgMapper.xml"/>
+        <mapper resource="mapper/House_userMapper.xml"/>
+        <mapper resource="mapper/HouseMapper.xml"/>
+        <mapper resource="mapper/BlogMapper.xml"/>
+    </mappers>
+</configuration>
+
